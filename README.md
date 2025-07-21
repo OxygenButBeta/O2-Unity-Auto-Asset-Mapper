@@ -29,9 +29,8 @@
 
 ### Example
 <div align="center">
-  <img width="389" height="348" src="https://github.com/user-attachments/assets/2e143fce-e5f3-4915-99a3-7068f318c001" alt="Mapper Editor Window" style="margin-right: 10px;" />
-  <img width="221" height="159" src="https://github.com/user-attachments/assets/2987fe8a-4a5c-4aa0-bc05-13c8d94b9b39" alt="Generated Files" style="margin-right: 10px;" />
-  <img width="372" height="95" src="https://github.com/user-attachments/assets/1335e2de-41da-4905-8d40-487ca3c07830" alt="Usage Example" />
+  <img width="552" height="839" alt="image" src="https://github.com/user-attachments/assets/a6102125-c0d1-4439-8d26-0974937286dc" />
+  <img width="382" height="582" alt="image" src="https://github.com/user-attachments/assets/60ad43a0-8ebe-4dbc-b2eb-520f2dca9ed7" />
 </div>
 
 ```csharp
