@@ -33,13 +33,22 @@
   <img width="382" height="582" alt="image" src="https://github.com/user-attachments/assets/60ad43a0-8ebe-4dbc-b2eb-520f2dca9ed7" />
 </div>
 
+## Audio Playback Example
 ```csharp
-[SerializeField]
-MySoundAsset sound; // Contains Enum keys only.
 
-void Play() {
-    audioSource.PlayOneShot(sound); // Implicit conversion to AudioClip
-}
+```csharp
+[SerializeField] VfxSoundAsset vfxSoundAsset;
+
+public void PlayAudio() {
+    // Play audio directly from the assigned asset
+    audioSource.PlayOneShot(vfxSoundAsset);
+
+    // Or get clip by index
+    AudioClip clip = VfxSoundMapper.GetWithIndex(4);
+
+    // Or get clip by enum key
+    AudioClip clip2 = VfxSoundMapper.GetWithKey(VfxSoundAssetKey.CarHit
+
 ```
 ## 🛠️ Requirements
 
