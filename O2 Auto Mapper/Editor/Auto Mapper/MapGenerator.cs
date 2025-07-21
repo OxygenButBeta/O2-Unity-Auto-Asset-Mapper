@@ -8,7 +8,7 @@ public static partial class MapGenerator {
         if (!Directory.Exists(sourceDir))
             Directory.CreateDirectory(sourceDir);
 
-        var addressableLabel = "Mapper_" + mapName;
+        var addressableLabel = "GeneratedMapper_" + mapName;
 
         var key = GetMapperKeySource(mapName, keys);
         File.WriteAllText(sourceDir + mapName + ".Keys.g.cs", key);

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 public static class MapValidator {
@@ -38,6 +40,15 @@ public static class MapValidator {
         HashSet<string> uniqueKeys = new(keys);
         if (uniqueKeys.Count != keys.Length) {
             error = "Duplicate keys found in the key array.";
+            return false;
+        }
+
+        Type existingType = AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(a => a.GetTypes())
+            .FirstOrDefault(t => t.Name == mapName + "Mapper");
+
+        if (existingType != null) {
+            error = $"A type with the name '{mapName}Mapper' already exists. Please choose a different name.";
             return false;
         }
 

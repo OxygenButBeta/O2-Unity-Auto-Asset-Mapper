@@ -1,4 +1,6 @@
-﻿public static partial class MapGenerator {
+﻿using System;
+
+public static partial class MapGenerator {
     const string AssetBody = @"
     // O2 UNITY AUTO ASSET MAPPER
     // ==============================
@@ -16,10 +18,11 @@
     // - This code is auto-generated; do NOT modify manually.
     //
     // ==============================
+    // Generated 1.0 {2}
 
     [System.Serializable]
     public struct {0}Asset {{
-        public {0}AssetKey Key;
+        [UnityEngine.SerializeField] {0}AssetKey Key;
         {1} cached;
 
         public {1} Value {{
@@ -46,10 +49,14 @@
 
             return cached;
         }}
+        public {0}Asset({0}AssetKey key) {{
+            cached = null;
+            this.Key = key;
+        }}
     }}
     ";
 
     static string GetAssetSource(string mapName, string typeFullName) {
-        return string.Format(AssetBody, mapName, typeFullName);
+        return string.Format(AssetBody, mapName, typeFullName, DateTime.Now);
     }
 }

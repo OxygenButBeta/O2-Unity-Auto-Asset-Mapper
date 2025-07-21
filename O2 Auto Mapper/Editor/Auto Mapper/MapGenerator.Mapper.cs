@@ -1,4 +1,6 @@
-﻿public static partial class MapGenerator {
+﻿using System;
+
+public static partial class MapGenerator {
     const string MapperBody = @"
         // O2 UNITY AUTO ASSET MAPPER
         // ==============================
@@ -10,12 +12,14 @@
         // This class provides mapping between keys and addressable assets for UI {1}.
         //
         // ==============================
-
+        // Generated 1.0 {3}
         using UnityEngine.AddressableAssets;
         using UnityEngine.ResourceManagement.AsyncOperations;
 
         public class {0}Mapper : BaseMapper<{1}, {0}AssetKey> {{
             public override string KeyScript => ""{0}.Keys.g"";
+            static {0}Mapper instance;
+
             [UnityEngine.Scripting.Preserve]
             public static {0}Mapper Instance {{
                 get {{
@@ -30,12 +34,24 @@
                     return instance;
                 }}
             }}
+     
 
-            static {0}Mapper instance;
+            public static {1} GetWithIndex(int index) {{
+                if (index < 0 || index >= Instance.assets.Count) {{
+                    UnityEngine.Debug.LogError($""Index {{index}} is out of bounds for {0}Mapper."");
+                    return null;
+                }}
+                return Instance[index];
+            }}
+
+            public static {1} GetWithKey({0}AssetKey key) {{
+                return Instance.GetByKey(key);
+            }}
         }}
     ";
 
+
     static string GetMapperSource(string mapName, string assetTypeName, string label) {
-        return string.Format(MapperBody, mapName, assetTypeName, label);
+        return string.Format(MapperBody, mapName, assetTypeName, label, DateTime.Now);
     }
 }

@@ -50,7 +50,9 @@ public static class MapGeneratorPostCompileHandler {
             var keys = EditorPrefs.GetString(PENDING_KEYS).Split(',');
             var assetPaths = EditorPrefs.GetString(PENDING_ASSET_PATHS).Split(',');
 
-            MethodInfo method = type.GetMethod("Set");
+            MethodInfo method = type.GetMethod(
+                "Set"
+            );
             if (method != null) {
                 Type assetType = type.BaseType!.GetGenericArguments()[0]; // TAsset
                 Type keyType = type.BaseType.GetGenericArguments()[1]; // TKey (enum)
@@ -60,6 +62,11 @@ public static class MapGeneratorPostCompileHandler {
                     var keyEnumValue = Enum.Parse(keyType, keys[i]);
                     method.Invoke(instance, new[] { assetObj, keyEnumValue });
                 }
+            }
+            else {
+                Debug.LogError(
+                    $"Method 'Set' not found in type {mapTypeName}. Ensure it is defined as 'protected void Set(TAsset asset, TKey key)'.");
+                return;
             }
 
 
