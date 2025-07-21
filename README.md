@@ -29,7 +29,7 @@
 
 ### Example
 <div align="center">
-  <img width="552" height="839" alt="image" src="https://github.com/user-attachments/assets/a6102125-c0d1-4439-8d26-0974937286dc" />
+  <img width="382" height="582" alt="image" src="https://github.com/user-attachments/assets/a6102125-c0d1-4439-8d26-0974937286dc" />
   <img width="382" height="582" alt="image" src="https://github.com/user-attachments/assets/60ad43a0-8ebe-4dbc-b2eb-520f2dca9ed7" />
 </div>
 
