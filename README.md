@@ -34,7 +34,6 @@
 </div>
 
 ## Audio Playback Example
-```csharp
 
 ```csharp
 [SerializeField] VfxSoundAsset vfxSoundAsset;
