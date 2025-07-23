@@ -57,9 +57,14 @@ public static class MapGeneratorPostCompileHandler {
                 Type keyType = type.BaseType.GetGenericArguments()[1]; // TKey (enum)
 
                 for (var i = 0; i < keys.Length; i++) {
-                    Object assetObj = AssetDatabase.LoadAssetAtPath(assetPaths[i], assetType);
-                    var keyEnumValue = Enum.Parse(keyType, keys[i]);
-                    method.Invoke(instance, new[] { assetObj, keyEnumValue });
+                    try {
+                        Object assetObj = AssetDatabase.LoadAssetAtPath(assetPaths[i], assetType);
+                        var keyEnumValue = Enum.Parse(keyType, keys[i]);
+                        method.Invoke(instance, new[] { assetObj, keyEnumValue });
+                    }
+                    catch (Exception) {
+                        // Just ignore errors during mapping
+                    }
                 }
             }
             else {
@@ -84,6 +89,8 @@ public static class MapGeneratorPostCompileHandler {
             EditorUtility.SetDirty(instance);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+            EditorUtility.FocusProjectWindow();
+            Selection.activeObject = instance;
         }
     }
 }
