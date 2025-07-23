@@ -27,13 +27,52 @@
 4. Generate the mapper, asset wrapper, and key enum via a single button.
 5. Use the generated struct (e.g. `MyAudioAsset`) directly in your code.
 
-### Example
-<div align="center">
-  <img width="382" height="582" alt="image" src="https://github.com/user-attachments/assets/a6102125-c0d1-4439-8d26-0974937286dc" />
-  <img width="382" height="582" alt="image" src="https://github.com/user-attachments/assets/60ad43a0-8ebe-4dbc-b2eb-520f2dca9ed7" />
-  <img width="382" height="582" alt="image" src="https://github.com/user-attachments/assets/7d59298c-8c41-437f-a4df-598debdee9b7" />
+## Quick Start
 
-</div>
+### Create Mapper by Selecting a Type
+
+1. Right-click in the **Project Explorer** window.
+2. Navigate to:  
+   `Assets > O2 Mapper > Create Mapper For a Type`
+3. In the window that appears, search and select the Unity asset type you want to create a mapper for.
+4. Click **Create Mapper** to open the mapper creation window.
+
+### Create Mapper Directly from Selected Assets
+
+1. Select one or multiple assets in the **Project Explorer** (e.g., Materials, GameObjects, Textures).
+2. Right-click and choose:  
+   `Assets > O2 Mapper > Create with Selected Items`
+3. The mapper creation window opens automatically with the asset type detected.
+4. Keys are assigned automatically based on the selected assets.
+
+---
+
+## Mapper Creation Process
+
+- Assets are automatically assigned unique keys.
+- Provide a name for the mapper (default is the selected asset type’s name).
+- Click **Generate** to create the mapper script.
+- After compilation, a ScriptableObject asset is generated and populated with the mapped assets.
+
+---
+
+## Screenshots
+
+*(Add your screenshots here with captions)*
+
+1. **Type Selection Window**  
+2. **Mapper Settings and Generation**  
+3. **Generated ScriptableObject Asset**
+
+---
+
+## Usage Notes
+
+- Use the type selector to find the exact Unity asset type quickly.
+- The mapper allows adding extra keys independent from assets for future extension.
+- Supports generating mappers for any UnityEngine.Object derived asset.
+
+---
 
 ## Audio Playback Example
 
