@@ -40,12 +40,12 @@ public static partial class MapGenerator {
         }}
 
         {1} GetAssetDynamic() {{
-            return {0}Mapper.Instance.GetByKey(Key);
+            return {0}Mapper.GetMappedAsset(Key);
         }}
 
         {1} GetAssetAndCache() {{
             if (!cached)
-                cached = {0}Mapper.Instance.GetByKey(Key);
+                cached = {0}Mapper.GetMappedAsset(Key);
 
             return cached;
         }}

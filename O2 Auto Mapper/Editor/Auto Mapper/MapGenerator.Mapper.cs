@@ -18,34 +18,34 @@ public static partial class MapGenerator {
 
         public class {0}Mapper : BaseMapper<{1}, {0}AssetKey> {{
             public override string KeyScript => ""{0}.Keys.g"";
-            static {0}Mapper instance;
+            static {0}Mapper @default;
 
             [UnityEngine.Scripting.Preserve]
-            public static {0}Mapper Instance {{
+            public static {0}Mapper Default {{
                 get {{
-                    if (instance)
-                        return instance;
+                    if (@default)
+                        return @default;
 
                     AsyncOperationHandle<{0}Mapper> handle =
                         Addressables.LoadAssetAsync<{0}Mapper>(
                             ""{2}"");
                     handle.WaitForCompletion();
-                    instance = handle.Result;
-                    return instance;
+                    @default = handle.Result;
+                    return @default;
                 }}
             }}
      
 
-            public static {1} GetWithIndex(int index) {{
-                if (index < 0 || index >= Instance.assets.Count) {{
+            public static {1} GetMappedAssetAt(int index) {{
+                if (index < 0 || index >= Default.Assets.Count) {{
                     UnityEngine.Debug.LogError($""Index {{index}} is out of bounds for {0}Mapper."");
                     return null;
                 }}
-                return Instance[index];
+                return Default[index];
             }}
 
-            public static {1} GetWithKey({0}AssetKey key) {{
-                return Instance.GetByKey(key);
+            public static {1} GetMappedAsset({0}AssetKey key) {{
+                return Default.GetMappedAssetViaKey(key);
             }}
         }}
     ";
