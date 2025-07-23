@@ -35,7 +35,6 @@ public static class MapGeneratorPostCompileHandler {
                 .FirstOrDefault(t => t.Name == mapTypeName && typeof(ScriptableObject).IsAssignableFrom(t));
 
             if (type == null) {
-                Debug.LogWarning($"Type {mapTypeName} not found after compile.");
                 return;
             }
 
@@ -64,8 +63,6 @@ public static class MapGeneratorPostCompileHandler {
                 }
             }
             else {
-                Debug.LogError(
-                    $"Method 'Set' not found in type {mapTypeName}. Ensure it is defined as 'protected void Set(TAsset asset, TKey key)'.");
                 return;
             }
 

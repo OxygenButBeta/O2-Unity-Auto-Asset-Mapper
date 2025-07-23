@@ -18,7 +18,7 @@ public class MapCreatorWindow : EditorWindow {
     Vector2 mainScroll;
     Object assetToAdd;
 
-    public static void Open(Object[] selected, Type type) {
+    public static void Open(IEnumerable<Object> selected, Type type) {
         MapCreatorWindow window = GetWindow<MapCreatorWindow>("O2 Unity Auto Mapper");
         window.selectedAssets = selected.ToList();
         window.assetType = type;

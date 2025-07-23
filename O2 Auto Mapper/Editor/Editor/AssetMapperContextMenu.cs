@@ -4,7 +4,7 @@ using UnityEditor;
 using Object = UnityEngine.Object;
 
 public static class AssetMapperContextMenu {
-    [MenuItem("Assets/Create Mapper", true)]
+    [MenuItem("Assets/O2 Mapper/Create with Selected Items", true)]
     static bool ValidateMenu() {
         Object[] selected = Selection.objects;
         if (selected.Length == 0) return false;
@@ -12,10 +12,10 @@ public static class AssetMapperContextMenu {
         if (!selected[0]) return false;
 
         Type firstType = selected[0].GetType();
-        return selected.All(obj => obj.GetType() == firstType);
+        return firstType != typeof(DefaultAsset) && selected.All(obj => obj.GetType() == firstType);
     }
 
-    [MenuItem("Assets/Create Mapper")]
+    [MenuItem("Assets/O2 Mapper/Create with Selected Items")]
     static void OpenProcessorWindow() {
         Object[] selected = Selection.objects;
         Type type = selected[0].GetType();
